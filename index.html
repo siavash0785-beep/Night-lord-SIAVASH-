@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>School Lessons</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #020303;
+            color: white;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        /* Background */
+        .background {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at center,
+                rgba(0, 255, 100, 0.12),
+                transparent 35%),
+                #020303;
+            z-index: -2;
+        }
+
+        /* Earth */
+        .globe {
+            width: 190px;
+            height: 190px;
+
+            border-radius: 50%;
+
+            position: absolute;
+            top: 50px;
+
+            background:
+                url("https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg");
+
+            background-size: cover;
+
+            box-shadow:
+                0 0 20px #00ff66,
+                0 0 50px rgba(0,255,100,0.5),
+                inset -20px -10px 30px rgba(0,0,0,0.8);
+
+            animation: rotateEarth 15s linear infinite;
+        }
+
+        @keyframes rotateEarth {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 100% 0;
+            }
+        }
+
+        /* Login */
+        .login-box {
+            width: 90%;
+            max-width: 400px;
+
+            margin-top: 180px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            background: rgba(10,10,10,0.92);
+
+            border: 1px solid #00ff66;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 0 20px rgba(0,255,100,0.2),
+                0 0 60px rgba(0,255,100,0.08);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+
+            color: #00ff66;
+
+            text-shadow:
+                0 0 10px #00ff66;
+        }
+
+        p {
+            color: #aaa;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 15px;
+
+            margin-top: 15px;
+
+            border: 1px solid #333;
+            border-radius: 8px;
+
+            outline: none;
+
+            background: #050505;
+            color: white;
+
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: #00ff66;
+
+            box-shadow:
+                0 0 10px rgba(0,255,100,0.3);
+        }
+
+        button {
+            width: 100%;
+
+            margin-top: 15px;
+
+            padding: 15px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #00c853;
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00ff66;
+            color: black;
+        }
+
+        #message {
+            color: #ff4444;
+            min-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background"></div>
+
+    <!-- Earth -->
+    <div class="globe"></div>
+
+    <!-- Login -->
+    <div class="login-box">
+
+        <h1>School Lessons</h1>
+
+        <p>Enter your password to continue</p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+        >
+
+        <button onclick="login()">
+            ENTER
+        </button>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script>
+
+        function login() {
+
+            const password =
+                document.getElementById("password").value;
+
+            const message =
+                document.getElementById("message");
+
+            /* Temporary password */
+            const correctPassword = "night_lord_SIAVASH";
+
+            if (password === correctPassword) {
+
+                message.style.color = "#00ff66";
+                message.textContent = "Login successful!";
+
+                /*
+                Later we will replace this
+                with the real school homepage.
+                */
+
+            } else {
+
+                message.style.color = "#ff4444";
+                message.textContent = "Wrong password!";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>
